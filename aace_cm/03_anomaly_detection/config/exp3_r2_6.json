@@ -1,0 +1,47 @@
+{
+  "model": "Conv1DAE",
+  "input_channels": ["X", "Y", "Z", "T"],
+  "centered_window_records": 7,
+  "latent_dimensions": 8,
+  "encoder_channels": [32, 64],
+  "kernel_size": 3,
+  "stride": 1,
+  "padding": 1,
+  "max_pool": 2,
+  "loss": "reconstruction_mse",
+  "optimizer": "Adam",
+  "learning_rate": 0.001,
+  "weight_decay": 0.00001,
+  "batch_size": 512,
+  "maximum_epochs": 100,
+  "early_stopping_patience": 15,
+  "early_stopping_relative_improvement": 0.0001,
+  "maximum_training_records": 200000,
+  "post_encoding_smoothing_radius_records": 30,
+  "dbscan": {
+    "metric": "euclidean",
+    "eps": 0.3,
+    "minimum_samples": 5,
+    "maximum_reference_points": 20000,
+    "separate_latent_and_residual_fits": true
+  },
+  "original_score_fusion": {
+    "alpha": 0.5,
+    "beta": 0.5
+  },
+  "figure_16_selected_rules": {
+    "fusion_candidate": "tail_extra_5_0.5",
+    "fusion_components": ["latent", "reconstruction", "residual", "vibration_level", "vibration_change", "warming"],
+    "fusion_coefficients": [0.25, 0.125, 0.125, 0, 0, 0.50],
+    "context_candidate": "final_12_1.0",
+    "context_features": ["preceding_vibration_variability", "preceding_temperature_level"],
+    "context_mode": "final",
+    "context_blend": 1.0,
+    "healthy_calibration_quantile": 0.99
+  },
+  "seeds": [42, 43, 44, 45, 46],
+  "fault_mechanisms": ["crack", "imbalance", "mechanical_looseness", "thermal"],
+  "severity_levels": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  "injection_ratios_percent": [1, 5, 10],
+  "score_availability_delay_seconds": 33
+}

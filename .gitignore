@@ -1,0 +1,29 @@
+# Allow source, requirements, and the two reviewed configuration files.
+*
+!*/
+!*.py
+!*.sh
+!requirements.txt
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/aace_cm/03_anomaly_detection/config/exp3_r2_6.json
+!/aace_cm/03_anomaly_detection/config/splits.example.json
+
+# Never track private inputs or generated directories.
+**/__pycache__/
+**/.venv/
+**/.env/
+**/local_inputs/
+**/inputs/
+**/data/
+**/runs/
+**/outputs/
+**/figures/
+**/replay_data/
+**/03-semantic_labels-old/
+**/aace_cm/02-features/
+**/aace_cm/03-semantic_labels/
+**/aace_cm/04-fault_data*/
+**/aace_cm/04-temp_fault_data*/
+**/aace_cm/05-outputs/
